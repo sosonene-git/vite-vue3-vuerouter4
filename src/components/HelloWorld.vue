@@ -1,40 +1,35 @@
 <script setup>
-import { ref } from 'vue'
-
-defineProps({
-  msg: String,
-})
-
-const count = ref(0)
+const getLink = (pageNo) => {
+  return `Page${pageNo}`
+}
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
+  <RouterLink
+    v-for="pageNo in [1, 2]"
+    :key="pageNo"
+    :to="getLink(pageNo)"
+    class="link"
+  >
+    Page {{ pageNo }}
+  </RouterLink>
 
-  <div class="card">
-    <button type="button" @click="count++">count is {{ count }}</button>
-    <p>
-      Edit
-      <code>components/HelloWorld.vue</code> to test HMR
-    </p>
-  </div>
-
-  <p>
-    Check out
-    <a href="https://vuejs.org/guide/quick-start.html#local" target="_blank"
-      >create-vue</a
-    >, the official Vue + Vite starter
-  </p>
-  <p>
-    Install
-    <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
-    in your IDE for a better DX
-  </p>
-  <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
+  <RouterView />
 </template>
 
 <style scoped>
-.read-the-docs {
-  color: #888;
+.link {
+  background-color: darkgreen;
+  border: solid 1px darkgray;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+.link:hover {
+  background-color: lightgreen;
+  color: darkgreen;
 }
 </style>
