@@ -3,8 +3,14 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
   {
+    path: '/',
+    // Default component for /
+    component: () => import('@/components/Page1.vue'),
+  },
+  {
     path: '/page1',
     component: () => import('@/components/Page1.vue'),
+    meta: { transition: 'slide' },
   },
   {
     path: '/page2',

@@ -14,9 +14,9 @@ const getLink = (pageNo) => {
     Page {{ pageNo }}
   </RouterLink>
 
-  <RouterView v-slot="{ Component }">
+  <RouterView v-slot="{ Component, route }">
     <!-- Doc: https://vueschool.io/lessons/route-transitions -->
-    <transition name="slide" mode="out-in">
+    <transition :name="route.meta.transition || 'fade'" mode="out-in">
       <component :is="Component" />
     </transition>
   </RouterView>
@@ -39,9 +39,16 @@ const getLink = (pageNo) => {
 }
 
 /* Transition */
+.fade-enter-active,
+.fade-leave-active,
 .slide-enter-active,
 .slide-leave-active {
   transition: opacity 1s, transform 1s;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 
 .slide-enter-from,
@@ -49,4 +56,6 @@ const getLink = (pageNo) => {
   opacity: 0;
   transform: translateX(-30%);
 }
+
+
 </style>
