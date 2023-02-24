@@ -18,8 +18,16 @@ const routes = [
   },
 ]
 
-export default createRouter({
+const router = createRouter({
   // Remove hash (#) from url, as opposed to createWebHashHistory which uses hash
   history: createWebHistory(),
   routes,
 })
+
+// Add lifecycle hook: afterEach
+router.afterEach((to, from) => {
+  // Change meta of route
+  to.meta.fromPath = from.path
+})
+
+export default router
