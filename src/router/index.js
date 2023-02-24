@@ -6,8 +6,8 @@ const routes = [
   // Doc: https://router.vuejs.org/api/interfaces/routelocation.html
   {
     path: '/',
-    // Default component for /
-    component: () => import('@/components/Page1.vue'),
+    // Note: Must specify a component to remove warning of No matching path
+    component: () => {},
     // Doc: https://router.vuejs.org/guide/advanced/navigation-guards.html#per-route-guard
     beforeEnter: (to, from, next) => {
       console.log(`[${import.meta.url.split('?')[0].split('/').slice(3).join('/')}::beforeEnter()] to, from`, to, from)
