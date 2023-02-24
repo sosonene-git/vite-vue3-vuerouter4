@@ -1,23 +1,25 @@
 <script setup>
 const getLink = (pageNo) => {
-  return `Page${pageNo}`
+  // Note: pageNo 0 is the root page /
+  return pageNo ? `/page${pageNo}` : '/'
 }
 </script>
 
 <template>
   <RouterLink
-    v-for="pageNo in [1, 2]"
+    v-for="pageNo in [0, 1, 2]"
     :key="pageNo"
     :to="getLink(pageNo)"
     class="link"
   >
-    Page {{ pageNo }}
+    {{ pageNo ? `Page ${pageNo}` : '/' }}
   </RouterLink>
 
   <RouterView v-slot="{ Component, route }">
     <!-- Doc: https://vueschool.io/lessons/route-transitions -->
     <transition :name="route.meta.transition || 'fade'" mode="out-in">
-      <component :is="Component" />
+      <!-- Note: use key to force transition when navigating between similar component -->
+      <component :is="Component" :key="route.path" />
     </transition>
   </RouterView>
 </template>
