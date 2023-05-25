@@ -6,6 +6,8 @@ const getLink = (pageNo) => {
 </script>
 
 <template>
+  <h1>Vue 3 + Vite + Vue Router 4 v.1.0.2</h1>
+
   <RouterLink
     v-for="pageNo in [0, 1, 2]"
     :key="pageNo"
