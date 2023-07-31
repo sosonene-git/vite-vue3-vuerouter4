@@ -16,7 +16,17 @@
 </script>
 
 <template>
-  <h1>Page: Catch All</h1>
+  <span>
+    <h1>Page: Catch All</h1>
+
+    <div
+      class="route-attributes"
+      v-for="routeKey in Object.keys(toRaw(route))"
+      :key="routeKey"
+    >
+      <strong>{{ routeKey }}</strong>: {{ route[routeKey] }}
+    </div>
+  </span>
 </template>
 
 <style scoped>

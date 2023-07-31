@@ -1,5 +1,16 @@
 <template>
-  <h1 ref="title"></h1>
+  <span>
+    <!-- Important: Multiple elements must be wrapped by one root element for transition to work -->
+    <h1 ref="title"></h1>
+
+    <section>
+      Page 2 Body
+
+      <div>
+        <em>Note: This is enclosed in &lt;span&gt; to support transition</em>
+      </div>
+    </section>
+  </span>
 </template>
 
 <script>
