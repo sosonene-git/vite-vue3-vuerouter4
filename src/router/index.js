@@ -24,6 +24,14 @@ const routes = [
     path: '/page2',
     component: () => import('@/components/Page2.vue'),
   },
+  {
+    path: '/page3',
+    component: () => import('@/components/Page3.vue'),
+  },
+  {
+    path: '/:segment',
+    component: () => import('@/components/CatchAll.vue'),
+  },
 ]
 
 const router = createRouter({

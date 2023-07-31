@@ -1,15 +1,20 @@
 <script setup>
-const getLink = (pageNo) => {
-  // Note: pageNo 0 is the root page /
-  return pageNo ? `/page${pageNo}` : '/'
-}
+  import { name, version } from '@/utilities/constants.js';
+
+  const getLink = (pageNo) => {
+    // Note: pageNo 0 is the root page /
+    return pageNo ? `/page${pageNo}` : '/'
+  }
 </script>
 
 <template>
-  <h1>Vue 3 + Vite + Vue Router 4 v.1.0.2</h1>
+  <h1>
+    {{ name }}
+    <small>v.{{ version }}</small>
+  </h1>
 
   <RouterLink
-    v-for="pageNo in [0, 1, 2]"
+    v-for="pageNo in [0, 1, 2, 3, 4]"
     :key="pageNo"
     :to="getLink(pageNo)"
     class="link"
@@ -27,6 +32,17 @@ const getLink = (pageNo) => {
 </template>
 
 <style scoped>
+h1 {
+  /* Dynamically adjust font based on screen width */
+  font-size: clamp(3.0rem, 5.3cqi, 7.5rem);
+}
+
+small {
+  /* Font size base on parent's font size */
+  font-size: 30%;
+  font-style: italic;
+}
+
 .link {
   background-color: darkgreen;
   border: solid 1px darkgray;
@@ -60,6 +76,4 @@ const getLink = (pageNo) => {
   opacity: 0;
   transform: translateX(-30%);
 }
-
-
 </style>
