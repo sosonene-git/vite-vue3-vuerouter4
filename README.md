@@ -22,4 +22,3 @@ yarn install
 yarn dev
 
 # After server is started, press q to quit server
-```
